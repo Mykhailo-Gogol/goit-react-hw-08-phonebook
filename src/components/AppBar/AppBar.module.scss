@@ -1,0 +1,18 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.nav_link,
+.nav_link:visited {
+  margin-right: 10px;
+  padding: 5px 10px;
+  color: black;
+  border: 1px solid white;
+  text-decoration: none;
+}
+
+.nav_link_active {
+  color: lightcoral;
+}
