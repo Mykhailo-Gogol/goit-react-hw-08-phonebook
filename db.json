@@ -1,0 +1,16 @@
+{
+  "contacts": [
+    {
+      "name": "Foo",
+      "number": "+38012312312",
+      "favourite": true,
+      "id": 1
+    },
+    {
+      "name": "Bar",
+      "number": "+38012312312",
+      "favourite": false,
+      "id": 2
+    }
+  ]
+}
