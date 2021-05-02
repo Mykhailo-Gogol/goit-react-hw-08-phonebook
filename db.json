@@ -15,8 +15,14 @@
     {
       "name": "M",
       "number": "+38012312312",
-      "favourite": false,
+      "favourite": true,
       "id": 3
+    },
+    {
+      "name": "S",
+      "number": "+38012312312",
+      "favourite": false,
+      "id": 4
     }
   ]
 }

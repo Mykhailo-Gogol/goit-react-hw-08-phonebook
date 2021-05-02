@@ -10,7 +10,7 @@ import AppBar from "./components/AppBar/";
 
 // REDUX
 import { useSelector } from "react-redux";
-import phonebookSelectors from "./redux/phonebook/phonebook-selectors";
+import contactsSelectors from "./redux/contacts/contacts-selectors";
 
 // ROUTER
 import routes from "./routes";
@@ -20,8 +20,8 @@ import { Switch, Route } from "react-router-dom";
 const HomePage = lazy(() =>
   import("./pages/Home/Home" /* webpackChunkName: "home-page" */)
 );
-const PhonebookPage = lazy(() =>
-  import("./pages/Phonebook/Phonebook" /* webpackChunkName: "phonebook-page" */)
+const ContactsPage = lazy(() =>
+  import("./pages/Contacts/Contacts" /* webpackChunkName: "contacts-page" */)
 );
 const LoginPage = lazy(() =>
   import("./pages/Login/Login" /* webpackChunkName: "login-page" */)
@@ -34,7 +34,7 @@ const NotFoundPage = lazy(() =>
 );
 
 const App = () => {
-  const isLoading = useSelector(phonebookSelectors.isLoadingSelector);
+  const isLoading = useSelector(contactsSelectors.isLoadingSelector);
   return (
     <div className={container}>
       <>
@@ -46,7 +46,7 @@ const App = () => {
             <Route exact path={routes.home} component={HomePage} />
             <Route path={routes.login} component={LoginPage} />
             <Route path={routes.register} component={RegisterPage} />
-            <Route path={routes.phonebook} component={PhonebookPage} />
+            <Route path={routes.contacts} component={ContactsPage} />
 
             <Route component={NotFoundPage} />
           </Switch>

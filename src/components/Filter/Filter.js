@@ -1,18 +1,18 @@
-import { filter_input } from './Filter.module.scss';
-import { useSelector, useDispatch } from 'react-redux';
-import phonebookActions from '../../redux/phonebook/phonebook-actions';
-import phonebookSelectors from '../../redux/phonebook/phonebook-selectors';
+import { filter_input } from "./Filter.module.scss";
+import { useSelector, useDispatch } from "react-redux";
+import contactsActions from "../../redux/contacts/contacts-actions";
+import contactsSelectors from "../../redux/contacts/contacts-selectors";
 
 // Material
-import Input from '@material-ui/core/Input';
+import Input from "@material-ui/core/Input";
 
 const Filter = () => {
-  const filter = useSelector(phonebookSelectors.filterSelector);
+  const filter = useSelector(contactsSelectors.filterSelector);
 
   const dispatch = useDispatch();
 
-  const handleInputChange = event => {
-    return dispatch(phonebookActions.onChangeFilter(event.target.value));
+  const handleInputChange = (event) => {
+    return dispatch(contactsActions.onChangeFilter(event.target.value));
   };
   return (
     <div>

@@ -2,7 +2,7 @@ const routes = {
   home: "/",
   login: "/login",
   register: "/register",
-  phonebook: "/phonebook",
+  contacts: "/contacts",
 };
 
 export default routes;

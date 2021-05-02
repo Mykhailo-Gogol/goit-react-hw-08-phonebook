@@ -17,11 +17,11 @@ function AppBar() {
             Home
           </NavLink>
           <NavLink
-            to={routes.phonebook}
+            to={routes.contacts}
             className={nav_link}
             activeClassName={nav_link_active}
           >
-            Phonebook
+            Contacts
           </NavLink>
         </div>
         <div>
