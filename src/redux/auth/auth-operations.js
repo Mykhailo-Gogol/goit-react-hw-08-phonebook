@@ -4,22 +4,22 @@ import authActions from "./auth-actions";
 axios.defaults.baseURL = "https://connections-api.herokuapp.com";
 
 const register = (credentials) => async (dispatch) => {
-  dispatch(authActions.registerRequest);
+  dispatch(authActions.registerRequest());
 
   try {
     const response = await axios.post("/users/signup", credentials);
-    dispatch(authActions.registerSuccess(response));
+    dispatch(authActions.registerSuccess(response.data));
   } catch (error) {
     dispatch(authActions.registerFailure(error));
   }
 };
 
-const login = (info) => async (dispatch) => {
+const login = (credentials) => async (dispatch) => {
   dispatch(authActions.loginRequest());
 
   try {
-    const response = await axios.post("/users/login", info);
-    dispatch(authActions.loginSuccess(response));
+    const response = await axios.post("/users/login", credentials);
+    dispatch(authActions.loginSuccess(response.data));
   } catch (error) {
     dispatch(authActions.loginFailure(error));
   }
@@ -32,7 +32,7 @@ const logout = (token) => async (dispatch) => {
 
   try {
     const response = await axios.post("/users/logout", token);
-    dispatch(authActions.logoutSuccess(response));
+    dispatch(authActions.logoutSuccess(response.data));
   } catch (error) {
     dispatch(authActions.logoutFailure(error));
   }
@@ -43,7 +43,7 @@ const getCurrentUser = (token) => async (dispatch) => {
 
   try {
     const response = await axios.get("/users/current", token);
-    dispatch(authActions.getCurrentUserSuccess(response));
+    dispatch(authActions.getCurrentUserSuccess(response.data));
   } catch (error) {
     dispatch(authActions.getCurrentUserFailure(error));
   }

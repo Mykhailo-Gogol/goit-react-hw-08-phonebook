@@ -50,3 +50,25 @@ export const connectionErrorValidation = (message) =>
     draggable: true,
     progress: undefined,
   });
+
+export const passwordInputValidation = () =>
+  toast.error("Minimum eight characters, at least one letter and one number", {
+    position: "top-right",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
+
+export const emailInputValidation = () =>
+  toast.error("@", {
+    position: "top-right",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
