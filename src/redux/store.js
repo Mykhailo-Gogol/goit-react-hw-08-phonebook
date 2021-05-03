@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import {
   persistStore,
   persistReducer,
@@ -8,15 +8,16 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
-import logger from 'redux-logger';
+} from "redux-persist";
+import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
+import logger from "redux-logger";
 
-import rootReducer from './rootReducer';
+import rootReducer from "./rootReducer";
 
 const persistConfig = {
-  key: 'react_phonebook',
+  key: "react_phonebook",
   storage,
+  whitelist: ["auth"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

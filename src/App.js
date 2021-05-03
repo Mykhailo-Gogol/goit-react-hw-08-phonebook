@@ -2,15 +2,16 @@ import { container } from "./App.module.scss";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 // React
-import { Suspense, lazy } from "react";
+import { useEffect, Suspense, lazy } from "react";
 
 // COMP
 import Loader from "./components/Loader";
 import AppBar from "./components/AppBar/";
 
 // REDUX
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import contactsSelectors from "./redux/contacts/contacts-selectors";
+import authOperations from "./redux/auth/auth-operations";
 
 // ROUTER
 import routes from "./routes";
@@ -34,13 +35,20 @@ const NotFoundPage = lazy(() =>
 );
 
 const App = () => {
+  const dispatch = useDispatch();
   const isLoading = useSelector(contactsSelectors.isLoadingSelector);
+
+  useEffect(() => {
+    dispatch(authOperations.getCurrentUser());
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div className={container}>
-      <>
+      <div>
         <AppBar />
-      </>
-      <>
+      </div>
+      <div>
         <Suspense fallback={<Loader />}>
           <Switch>
             <Route exact path={routes.home} component={HomePage} />
@@ -51,7 +59,7 @@ const App = () => {
             <Route component={NotFoundPage} />
           </Switch>
         </Suspense>
-      </>
+      </div>
 
       {/* Spinner */}
       {isLoading && <Loader />}
