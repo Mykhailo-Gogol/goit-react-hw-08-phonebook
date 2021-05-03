@@ -3,7 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 export const registrationSuccess = () =>
   toast.success("Registration Success", {
-    position: "top-right",
+    position: "bottom-right",
     autoClose: 3000,
     hideProgressBar: false,
     closeOnClick: true,
@@ -14,7 +14,7 @@ export const registrationSuccess = () =>
 
 export const loginSuccess = () =>
   toast.success("Login Success", {
-    position: "top-right",
+    position: "bottom-right",
     autoClose: 3000,
     hideProgressBar: false,
     closeOnClick: true,
@@ -25,7 +25,7 @@ export const loginSuccess = () =>
 
 export const logoutSuccess = () =>
   toast.success("Logout Success", {
-    position: "top-right",
+    position: "bottom-right",
     autoClose: 3000,
     hideProgressBar: false,
     closeOnClick: true,

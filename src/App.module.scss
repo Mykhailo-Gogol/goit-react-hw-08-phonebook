@@ -3,3 +3,11 @@
   margin: 0 auto;
   padding: 0 20px;
 }
+
+@media (max-width: 767px) {
+  .container {
+    text-align: center;
+    margin: 0 auto;
+    padding: 0 9px;
+  }
+}
