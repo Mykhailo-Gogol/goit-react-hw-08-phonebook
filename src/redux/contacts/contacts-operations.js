@@ -1,9 +1,9 @@
 import axios from "axios";
 import contactsActions from "./contacts-actions";
 
-import { connectionErrorValidation } from "../../utils/notifications";
+import { connectionErrorValidation } from "../../utils/error-notifications/error-notifications.js";
 
-axios.defaults.baseURL = "http://localhost:4000";
+axios.defaults.baseURL = "https://connections-api.herokuapp.com";
 
 // FETCH CONTACTS
 const fetchContactOperation = (payload) => (dispatch) => {

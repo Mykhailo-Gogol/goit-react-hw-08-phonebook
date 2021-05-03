@@ -12,7 +12,7 @@ import {
   nameInputValidation,
   numberInputValidation,
   contactDuplicateValidation,
-} from "../../utils/notifications";
+} from "../../utils/error-notifications/error-notifications";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";

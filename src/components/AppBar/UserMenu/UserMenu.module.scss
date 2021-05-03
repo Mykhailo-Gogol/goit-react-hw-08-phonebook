@@ -1,0 +1,21 @@
+.app_bar_nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.app_bar_link {
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.user_menu {
+  display: flex;
+  align-items: flex-end;
+}
+
+.user_email {
+  background-color: black;
+  color: white;
+  padding: 10px 5px;
+}
