@@ -1,10 +1,13 @@
-.app_bar_nav {
+.auth_menu {
   display: flex;
-  justify-content: space-between;
-  padding: 20px 0;
+  align-items: center;
 }
 
 .app_bar_link {
   margin-right: 10px;
+  text-decoration: none;
+}
+
+.app_bar_link_decoration {
   text-decoration: none;
 }

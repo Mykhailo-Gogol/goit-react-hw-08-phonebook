@@ -17,6 +17,10 @@ import authOperations from "./redux/auth/auth-operations";
 import routes from "./routes";
 import { Switch, Route } from "react-router-dom";
 
+// REDIRECT
+import PrivateRoute from "./components/PrivateRoute";
+import PublicRoute from "./components/PublicRoute";
+
 // Lazy
 const HomePage = lazy(() =>
   import("./pages/Home/Home" /* webpackChunkName: "home-page" */)
@@ -52,10 +56,26 @@ const App = () => {
         <Suspense fallback={<Loader />}>
           <Switch>
             <Route exact path={routes.home} component={HomePage} />
-            <Route path={routes.login} component={LoginPage} />
-            <Route path={routes.register} component={RegisterPage} />
-            <Route path={routes.contacts} component={ContactsPage} />
-
+            {/* <Route path={routes.login} component={LoginPage} /> */}
+            <PublicRoute
+              path={routes.login}
+              component={LoginPage}
+              redirectTo="/"
+              restricted
+            />
+            {/* <Route path={routes.register} component={RegisterPage} /> */}
+            <PublicRoute
+              path={routes.register}
+              component={RegisterPage}
+              redirectTo="/"
+              restricted
+            />
+            {/* <Route path={routes.contacts} component={ContactsPage} /> */}
+            <PrivateRoute
+              path={routes.contacts}
+              component={ContactsPage}
+              redirectTo="/login"
+            />
             <Route component={NotFoundPage} />
           </Switch>
         </Suspense>

@@ -3,3 +3,31 @@
   justify-content: space-between;
   padding: 20px 0;
 }
+
+.main_nav {
+  display: flex;
+  align-items: center;
+}
+
+.app_bar_link {
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+.app_bar_link_decoration {
+  text-decoration: none;
+}
+
+@media (max-width: 767px) {
+  .app_bar_nav {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .main_nav {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

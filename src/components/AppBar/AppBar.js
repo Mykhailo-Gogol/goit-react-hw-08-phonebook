@@ -1,4 +1,9 @@
-import { app_bar_nav } from "./AppBar.module.scss";
+import {
+  app_bar_nav,
+  app_bar_link,
+  app_bar_link_decoration,
+  main_nav,
+} from "./AppBar.module.scss";
 
 // ROUTER
 import routes from "../../routes";
@@ -10,22 +15,45 @@ import { useSelector } from "react-redux";
 
 // MATERIAL
 import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
 
 // COMP
 import AuthNav from "./AuthNav";
 import UserMenu from "./UserMenu";
 
+const useStyles = makeStyles({
+  button_mobile: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 105,
+    fontSize: 12,
+  },
+});
+
 function AppBar() {
+  const styles = useStyles();
   const token = useSelector(authSelectors.tokenSelector);
   return (
     <header>
       <nav className={app_bar_nav}>
-        <div>
-          <NavLink exact to={routes.home}>
-            <Button variant="contained" color="primary">
+        <div className={main_nav}>
+          <NavLink exact to={routes.home} className={app_bar_link_decoration}>
+            <Button
+              className={styles.button_mobile}
+              variant="outlined"
+              color="primary"
+            >
               Home
             </Button>
           </NavLink>
+          {token ? (
+            <NavLink to={routes.contacts} className={app_bar_link}>
+              <Button className={styles.button_mobile} variant="outlined">
+                Contacts
+              </Button>
+            </NavLink>
+          ) : null}
         </div>
         {token ? <UserMenu /> : <AuthNav />}
       </nav>
