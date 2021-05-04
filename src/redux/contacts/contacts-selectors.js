@@ -32,6 +32,7 @@ const contactsSelectors = {
   contactsSelector,
   filterSelector,
   isLoadingSelector,
+
   contactsReselect,
   filteredContactsSelector,
 };

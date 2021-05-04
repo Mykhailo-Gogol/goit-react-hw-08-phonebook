@@ -10,17 +10,19 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import contactsOperations from "../../redux/contacts/contacts-operations";
 import contactsSelectors from "../../redux/contacts/contacts-selectors";
+// import authSelectors from "../../redux/auth/auth-selectors";
 
 // Material
 import Button from "@material-ui/core/Button";
 import BackspaceTwoToneIcon from "@material-ui/icons/BackspaceTwoTone";
-import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
-import BookmarkIcon from "@material-ui/icons/Bookmark";
-import { blue } from "@material-ui/core/colors";
+// import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
+// import BookmarkIcon from "@material-ui/icons/Bookmark";
+// import { blue } from "@material-ui/core/colors";
 
 const ContactList = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(contactsSelectors.filteredContactsSelector);
+  // const isAuthenticated = useSelector(authSelectors.isAuthenticatedSelector);
 
   useEffect(() => {
     dispatch(contactsOperations.fetchContactOperation());
@@ -40,13 +42,13 @@ const ContactList = () => {
     return dispatch(contactsOperations.deleteContactOperation(id));
   };
 
-  const handleToggleFavourite = (update) => {
-    return dispatch(contactsOperations.toggleContactFavourite(update));
-  };
+  // const handleToggleFavourite = (update) => {
+  //   return dispatch(contactsOperations.toggleContactFavourite(update));
+  // };
 
   return (
     <>
-      {contacts.length ? (
+      {contacts.length > 0 ? (
         <ol className={contact_list}>
           {contacts.map(({ name, number, id, favourite }) => {
             return (
@@ -60,10 +62,10 @@ const ContactList = () => {
                     className="delete-button"
                     onClick={() => handleDeleteContact(id)}
                   >
-                    <BackspaceTwoToneIcon color="disabled" />
+                    <BackspaceTwoToneIcon color="primary" />
                   </Button>
 
-                  <Button
+                  {/* <Button
                     className="favourite-button"
                     onClick={() =>
                       handleToggleFavourite({ id, favourite: !favourite })
@@ -74,7 +76,7 @@ const ContactList = () => {
                     ) : (
                       <BookmarkBorderIcon color="disabled" />
                     )}
-                  </Button>
+                  </Button> */}
                 </div>
               </li>
             );

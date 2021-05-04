@@ -33,7 +33,7 @@ const useStyles = makeStyles({
 
 function AppBar() {
   const styles = useStyles();
-  const token = useSelector(authSelectors.tokenSelector);
+  const isAuthenticated = useSelector(authSelectors.isAuthenticatedSelector);
   return (
     <header>
       <nav className={app_bar_nav}>
@@ -47,15 +47,19 @@ function AppBar() {
               Home
             </Button>
           </NavLink>
-          {token ? (
+          {isAuthenticated ? (
             <NavLink to={routes.contacts} className={app_bar_link}>
-              <Button className={styles.button_mobile} variant="outlined">
+              <Button
+                className={styles.button_mobile}
+                variant="outlined"
+                color="secondary"
+              >
                 Contacts
               </Button>
             </NavLink>
           ) : null}
         </div>
-        {token ? <UserMenu /> : <AuthNav />}
+        {isAuthenticated ? <UserMenu /> : <AuthNav />}
       </nav>
     </header>
   );

@@ -33,7 +33,6 @@ const UserMenu = () => {
         <Button
           className={styles.button_mobile}
           variant="outlined"
-          color="secondary"
           onClick={() => dispatch(authOperations.logout())}
         >
           Log Out

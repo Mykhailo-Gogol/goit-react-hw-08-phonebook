@@ -43,7 +43,7 @@ const App = () => {
   const isLoading = useSelector(contactsSelectors.isLoadingSelector);
 
   useEffect(() => {
-    dispatch(authOperations.getCurrentUser());
+    return dispatch(authOperations.getCurrentUser());
     // eslint-disable-next-line
   }, []);
 

@@ -21,10 +21,10 @@ const contacts = createReducer(contactsState.items, {
   [contactsActions.onDeleteContactSuccess]: (state, { type, payload }) =>
     state.filter(({ id }) => id !== payload),
   // TOGGLE
-  [contactsActions.onToggleFavouriteSuccess]: (state, { type, payload }) =>
-    state.map((contact) => {
-      return contact.id === payload.id ? payload : contact;
-    }),
+  // [contactsActions.onToggleFavouriteSuccess]: (state, { type, payload }) =>
+  //   state.map((contact) => {
+  //     return contact.id === payload.id ? payload : contact;
+  //   }),
 });
 
 const loading = createReducer(contactsState.loading, {
@@ -34,9 +34,9 @@ const loading = createReducer(contactsState.loading, {
   [contactsActions.onDeleteContactRequest]: () => true,
   [contactsActions.onDeleteContactSuccess]: () => false,
   [contactsActions.onDeleteContactFailure]: () => false,
-  [contactsActions.onToggleFavouriteRequest]: () => true,
-  [contactsActions.onToggleFavouriteSuccess]: () => false,
-  [contactsActions.onToggleFavouriteFailure]: () => false,
+  // [contactsActions.onToggleFavouriteRequest]: () => true,
+  // [contactsActions.onToggleFavouriteSuccess]: () => false,
+  // [contactsActions.onToggleFavouriteFailure]: () => false,
   [contactsActions.onFetchContactsRequest]: () => true,
   [contactsActions.onFetchContactsSuccess]: () => false,
   [contactsActions.onFetchContactsFailure]: () => false,

@@ -22,7 +22,7 @@ const fetchContactOperation = (payload) => (dispatch) => {
 const addContactOperation = (payload) => (dispatch) => {
   const contact = {
     ...payload,
-    favourite: false,
+    // favourite: false,
   };
 
   dispatch(contactsActions.onAddContactRequest());
@@ -50,27 +50,27 @@ const deleteContactOperation = (id) => (dispatch) => {
 };
 
 // TOGGLE
-const toggleContactFavourite = ({ id, favourite }) => (dispatch) => {
-  dispatch(contactsActions.onToggleFavouriteRequest());
+// const toggleContactFavourite = ({ id, favourite }) => (dispatch) => {
+//   dispatch(contactsActions.onToggleFavouriteRequest());
 
-  const update = { favourite };
+//   const update = { favourite };
 
-  axios
-    .patch(`/contacts/${id}`, update)
-    .then(({ data }) =>
-      dispatch(contactsActions.onToggleFavouriteSuccess(data))
-    )
-    .catch((error) => {
-      connectionErrorValidation(error.message);
-      dispatch(contactsActions.onToggleFavouriteFailure(error));
-    });
-};
+//   axios
+//     .patch(`/contacts/${id}`, update)
+//     .then(({ data }) =>
+//       dispatch(contactsActions.onToggleFavouriteSuccess(data))
+//     )
+//     .catch((error) => {
+//       connectionErrorValidation(error.message);
+//       dispatch(contactsActions.onToggleFavouriteFailure(error));
+//     });
+// };
 
 const contactsOperations = {
   fetchContactOperation,
   addContactOperation,
   deleteContactOperation,
-  toggleContactFavourite,
+  // toggleContactFavourite,
 };
 
 export default contactsOperations;

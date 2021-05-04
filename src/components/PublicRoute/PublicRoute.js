@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import authSelectors from "../../redux/auth/auth-selectors";
 
 const PublicRoute = ({ component: Component, ...props }) => {
-  const isAuthenticated = useSelector(authSelectors.tokenSelector);
+  const isAuthenticated = useSelector(authSelectors.isAuthenticatedSelector);
 
   return (
     <Route
