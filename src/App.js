@@ -43,7 +43,7 @@ const App = () => {
   const isLoading = useSelector(contactsSelectors.isLoadingSelector);
 
   useEffect(() => {
-    return dispatch(authOperations.getCurrentUser());
+    dispatch(authOperations.getCurrentUser());
     // eslint-disable-next-line
   }, []);
 
@@ -60,14 +60,14 @@ const App = () => {
             <PublicRoute
               path={routes.login}
               component={LoginPage}
-              redirectTo="/"
+              redirectTo="/contacts"
               restricted
             />
             {/* <Route path={routes.register} component={RegisterPage} /> */}
             <PublicRoute
               path={routes.register}
               component={RegisterPage}
-              redirectTo="/"
+              redirectTo="/contacts"
               restricted
             />
             {/* <Route path={routes.contacts} component={ContactsPage} /> */}

@@ -1,6 +1,11 @@
 import axios from "axios";
 import contactsActions from "./contacts-actions";
 
+// UTILS
+import {
+  addContactSuccess,
+  deleteContactSuccess,
+} from "../../utils/success-notifications/success-notifications.js";
 import { connectionErrorValidation } from "../../utils/error-notifications/error-notifications.js";
 
 axios.defaults.baseURL = "https://connections-api.herokuapp.com";
@@ -20,16 +25,19 @@ const fetchContactOperation = (payload) => (dispatch) => {
 
 // ADD
 const addContactOperation = (payload) => (dispatch) => {
-  const contact = {
-    ...payload,
-    // favourite: false,
-  };
+  // const contact = {
+  //   ...payload,
+  //   // favourite: false,
+  // };
 
   dispatch(contactsActions.onAddContactRequest());
 
   axios
-    .post("/contacts", contact)
-    .then(({ data }) => dispatch(contactsActions.onAddContactSuccess(data)))
+    .post("/contacts", payload)
+    .then(({ data }) => {
+      dispatch(contactsActions.onAddContactSuccess(data));
+      addContactSuccess(payload.name);
+    })
     .catch((error) => {
       connectionErrorValidation(error.message);
       dispatch(contactsActions.onAddContactFailure(error));
@@ -42,7 +50,10 @@ const deleteContactOperation = (id) => (dispatch) => {
 
   axios
     .delete(`/contacts/${id}`)
-    .then(() => dispatch(contactsActions.onDeleteContactSuccess(id)))
+    .then(() => {
+      dispatch(contactsActions.onDeleteContactSuccess(id));
+      deleteContactSuccess();
+    })
     .catch((error) => {
       connectionErrorValidation(error.message);
       dispatch(contactsActions.onDeleteContactFailure(error));

@@ -1,4 +1,6 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+// import { combineReducers } from "redux";
+
 import {
   persistStore,
   persistReducer,
@@ -11,16 +13,23 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 import logger from "redux-logger";
+import authReducer from "../redux/auth/auth-reducer";
+import contactsReducer from "../redux/contacts/contacts-reducer";
 
-import rootReducer from "./rootReducer";
+// import rootReducer from "./rootReducer";
+
+// const rootReducer = combineReducers({
+//   auth: authReducer,
+//   contacts: contactsReducer,
+// });
 
 const persistConfig = {
-  key: "react_phonebook",
+  key: "react_phonebook_token",
   storage,
-  whitelist: ["auth"],
+  whitelist: ["token"],
 };
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedAuthReducer = persistReducer(persistConfig, authReducer);
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -32,7 +41,10 @@ const middleware = [
 ];
 
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: {
+    auth: persistedAuthReducer,
+    contacts: contactsReducer,
+  },
   middleware: middleware,
   devTools: true,
 });

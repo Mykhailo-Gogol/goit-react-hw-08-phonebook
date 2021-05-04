@@ -83,7 +83,7 @@ const ContactList = () => {
           })}
         </ol>
       ) : (
-        <p>Contact list is empty</p>
+        <p>Sorry, no matches found.</p>
       )}
     </>
   );
