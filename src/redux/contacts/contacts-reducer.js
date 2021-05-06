@@ -1,6 +1,5 @@
 import { combineReducers } from "redux";
 import { createReducer } from "@reduxjs/toolkit";
-
 import contactsActions from "./contacts-actions";
 
 const contactsState = {
@@ -12,19 +11,16 @@ const contactsState = {
 const contacts = createReducer(contactsState.items, {
   // FETCH
   [contactsActions.onFetchContactsSuccess]: (state, { payload }) => payload,
+
   // ADD
   [contactsActions.onAddContactSuccess]: (state, { type, payload }) => [
     ...state,
     payload,
   ],
+
   // DELETE
   [contactsActions.onDeleteContactSuccess]: (state, { type, payload }) =>
     state.filter(({ id }) => id !== payload),
-  // TOGGLE
-  // [contactsActions.onToggleFavouriteSuccess]: (state, { type, payload }) =>
-  //   state.map((contact) => {
-  //     return contact.id === payload.id ? payload : contact;
-  //   }),
 });
 
 const loading = createReducer(contactsState.loading, {
@@ -34,9 +30,7 @@ const loading = createReducer(contactsState.loading, {
   [contactsActions.onDeleteContactRequest]: () => true,
   [contactsActions.onDeleteContactSuccess]: () => false,
   [contactsActions.onDeleteContactFailure]: () => false,
-  // [contactsActions.onToggleFavouriteRequest]: () => true,
-  // [contactsActions.onToggleFavouriteSuccess]: () => false,
-  // [contactsActions.onToggleFavouriteFailure]: () => false,
+
   [contactsActions.onFetchContactsRequest]: () => true,
   [contactsActions.onFetchContactsSuccess]: () => false,
   [contactsActions.onFetchContactsFailure]: () => false,

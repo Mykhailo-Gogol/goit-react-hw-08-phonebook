@@ -1,4 +1,3 @@
-// import shortid from "shortid";
 import { useState } from "react";
 import { form_input, contact_form } from "./Form.module.scss";
 
@@ -6,7 +5,7 @@ import { form_input, contact_form } from "./Form.module.scss";
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
 
-// Toastyfy
+// Toastify
 import { ToastContainer } from "react-toastify";
 import {
   nameInputValidation,
@@ -101,7 +100,7 @@ const Form = () => {
           id="number"
           required
         />
-        <Button variant="contained" type="submit">
+        <Button variant="outlined" type="submit">
           Add contact
         </Button>
       </form>

@@ -1,7 +1,6 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// Errors
 export const registrationError = () =>
   toast.error("Registration Error", {
     position: "top-right",

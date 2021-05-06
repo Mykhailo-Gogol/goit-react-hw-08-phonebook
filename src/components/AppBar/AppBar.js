@@ -5,19 +5,19 @@ import {
   main_nav,
 } from "./AppBar.module.scss";
 
-// ROUTER
+// Router
 import routes from "../../routes";
 import { NavLink } from "react-router-dom";
 
-// REDUX
+// Redux
 import authSelectors from "../../redux/auth/auth-selectors";
 import { useSelector } from "react-redux";
 
-// MATERIAL
+// Material
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
-// COMP
+// Comps
 import AuthNav from "./AuthNav";
 import UserMenu from "./UserMenu";
 
@@ -52,7 +52,7 @@ function AppBar() {
               <Button
                 className={styles.button_mobile}
                 variant="outlined"
-                color="secondary"
+                color="primary"
               >
                 Contacts
               </Button>

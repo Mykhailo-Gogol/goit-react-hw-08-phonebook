@@ -1,4 +1,6 @@
 import { filter_input } from "./Filter.module.scss";
+
+// Redux
 import { useSelector, useDispatch } from "react-redux";
 import contactsActions from "../../redux/contacts/contacts-actions";
 import contactsSelectors from "../../redux/contacts/contacts-selectors";

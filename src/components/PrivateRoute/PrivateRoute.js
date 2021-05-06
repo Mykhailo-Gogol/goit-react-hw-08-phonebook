@@ -1,7 +1,7 @@
-// ROUTER
+// Router
 import { Route, Redirect } from "react-router-dom";
 
-// REDUX
+// Redux
 import { useSelector } from "react-redux";
 import authSelectors from "../../redux/auth/auth-selectors";
 

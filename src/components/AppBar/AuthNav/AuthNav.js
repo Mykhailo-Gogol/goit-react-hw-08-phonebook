@@ -4,14 +4,15 @@ import {
   app_bar_link_decoration,
 } from "./AuthNav.module.scss";
 
-// MATERIAL
+// Material
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
-// ROUTER
+// Router
 import routes from "../../../routes";
 import { NavLink } from "react-router-dom";
 
+// Styles
 const useStyles = makeStyles({
   button_mobile: {
     display: "flex",

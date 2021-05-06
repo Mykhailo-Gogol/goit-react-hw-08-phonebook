@@ -1,7 +1,7 @@
 import { title_404, image_404 } from "./NotFoundPage.module.scss";
 
-// Utils
-import PNFImage from "../../images/404.jpeg";
+// Images
+import PNFImage from "../../images/404.svg";
 
 const NotFoundPage = () => {
   return (

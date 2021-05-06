@@ -1,4 +1,3 @@
-// import shortid from "shortid";
 import { useState } from "react";
 import { form_input, contact_form } from "./RegistrationForm.module.scss";
 
@@ -6,13 +5,14 @@ import { form_input, contact_form } from "./RegistrationForm.module.scss";
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
 
-// Toastyfy
+// Toastify
 import { ToastContainer } from "react-toastify";
 import {
   nameInputValidation,
   emailInputValidation,
   passwordInputValidation,
 } from "../../utils/error-notifications/error-notifications";
+
 // Redux
 import { useDispatch } from "react-redux";
 import authOperations from "../../redux/auth/auth-operations";

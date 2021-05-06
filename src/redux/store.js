@@ -1,5 +1,4 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-// import { combineReducers } from "redux";
 
 import {
   persistStore,
@@ -17,11 +16,6 @@ import authReducer from "../redux/auth/auth-reducer";
 import contactsReducer from "../redux/contacts/contacts-reducer";
 
 // import rootReducer from "./rootReducer";
-
-// const rootReducer = combineReducers({
-//   auth: authReducer,
-//   contacts: contactsReducer,
-// });
 
 const persistConfig = {
   key: "react_phonebook_token",

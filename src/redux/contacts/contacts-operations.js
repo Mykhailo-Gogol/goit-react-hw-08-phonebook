@@ -1,7 +1,5 @@
 import axios from "axios";
 import contactsActions from "./contacts-actions";
-
-// UTILS
 import {
   addContactSuccess,
   deleteContactSuccess,
@@ -25,11 +23,6 @@ const fetchContactOperation = (payload) => (dispatch) => {
 
 // ADD
 const addContactOperation = (payload) => (dispatch) => {
-  // const contact = {
-  //   ...payload,
-  //   // favourite: false,
-  // };
-
   dispatch(contactsActions.onAddContactRequest());
 
   axios
@@ -60,28 +53,10 @@ const deleteContactOperation = (id) => (dispatch) => {
     });
 };
 
-// TOGGLE
-// const toggleContactFavourite = ({ id, favourite }) => (dispatch) => {
-//   dispatch(contactsActions.onToggleFavouriteRequest());
-
-//   const update = { favourite };
-
-//   axios
-//     .patch(`/contacts/${id}`, update)
-//     .then(({ data }) =>
-//       dispatch(contactsActions.onToggleFavouriteSuccess(data))
-//     )
-//     .catch((error) => {
-//       connectionErrorValidation(error.message);
-//       dispatch(contactsActions.onToggleFavouriteFailure(error));
-//     });
-// };
-
 const contactsOperations = {
   fetchContactOperation,
   addContactOperation,
   deleteContactOperation,
-  // toggleContactFavourite,
 };
 
 export default contactsOperations;

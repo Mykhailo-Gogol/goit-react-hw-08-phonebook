@@ -4,20 +4,20 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 // React
 import { useEffect, Suspense, lazy } from "react";
 
-// COMP
+// Comps
 import Loader from "./components/Loader";
 import AppBar from "./components/AppBar/";
 
-// REDUX
+// Redux
 import { useSelector, useDispatch } from "react-redux";
 import contactsSelectors from "./redux/contacts/contacts-selectors";
 import authOperations from "./redux/auth/auth-operations";
 
-// ROUTER
+// Router
 import routes from "./routes";
 import { Switch, Route } from "react-router-dom";
 
-// REDIRECT
+// Routes
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
 
@@ -56,21 +56,18 @@ const App = () => {
         <Suspense fallback={<Loader />}>
           <Switch>
             <Route exact path={routes.home} component={HomePage} />
-            {/* <Route path={routes.login} component={LoginPage} /> */}
             <PublicRoute
               path={routes.login}
               component={LoginPage}
               redirectTo="/contacts"
               restricted
             />
-            {/* <Route path={routes.register} component={RegisterPage} /> */}
             <PublicRoute
               path={routes.register}
               component={RegisterPage}
               redirectTo="/contacts"
               restricted
             />
-            {/* <Route path={routes.contacts} component={ContactsPage} /> */}
             <PrivateRoute
               path={routes.contacts}
               component={ContactsPage}
@@ -81,7 +78,6 @@ const App = () => {
         </Suspense>
       </div>
 
-      {/* Spinner */}
       {isLoading && <Loader />}
     </div>
   );

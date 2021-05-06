@@ -1,15 +1,16 @@
-.title_404 {
+.home_title {
   text-align: center;
   margin: 20px 0;
 }
-.image_404 {
+
+.home_image {
   display: block;
   width: 412px;
   margin: 50px auto;
 }
 
 @media (max-width: 767px) {
-  .image_404 {
+  .home_image {
     width: 212px;
     margin: 20px auto;
   }

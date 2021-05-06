@@ -1,16 +1,15 @@
 import { user_menu, app_bar_link } from "./UserMenu.module.scss";
 
-// MATERIAL
+// Material
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
-import { useSelector } from "react-redux";
-
-// REDUX
-import { useDispatch } from "react-redux";
+// Redux
+import { useDispatch, useSelector } from "react-redux";
 import authSelectors from "../../../redux/auth/auth-selectors";
 import authOperations from "../../../redux/auth/auth-operations";
 
+// Styles
 const useStyles = makeStyles({
   button_mobile: {
     display: "flex",
