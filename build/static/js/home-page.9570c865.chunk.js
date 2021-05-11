@@ -1,0 +1,2 @@
+(this["webpackJsonpgoit-react-hw-08-phonebook"]=this["webpackJsonpgoit-react-hw-08-phonebook"]||[]).push([[3],{152:function(e,t,o){e.exports={home_title:"Home_home_title__iB9Yi",home_image:"Home_home_image__2ilDv"}},173:function(e,t,o){"use strict";o.r(t);var i=o(152),s=o.p+"static/media/home.09e39082.svg",a=o(2);t.default=function(){return Object(a.jsxs)("div",{children:[Object(a.jsx)("h1",{className:i.home_title,children:"Home page"}),Object(a.jsx)("img",{src:s,alt:"Home page",className:i.home_image})]})}}}]);
+//# sourceMappingURL=home-page.9570c865.chunk.js.map
