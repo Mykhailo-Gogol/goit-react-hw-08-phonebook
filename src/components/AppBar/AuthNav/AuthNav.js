@@ -7,6 +7,8 @@ import {
 // Material
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
+import PersonAddOutlinedIcon from "@material-ui/icons/PersonAddOutlined";
+import LockOpenIcon from "@material-ui/icons/LockOpen";
 
 // Router
 import routes from "../../../routes";
@@ -18,8 +20,15 @@ const useStyles = makeStyles({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    width: 105,
+    width: 50,
     fontSize: 12,
+    background: "#F4FAFF",
+    "&:hover": {
+      background: "#7CC6FE",
+    },
+    "&:active": {
+      background: "#758BFD",
+    },
   },
 });
 
@@ -30,7 +39,7 @@ const AuthNav = () => {
     <div className={auth_menu}>
       <NavLink to={routes.login} className={app_bar_link}>
         <Button className={styles.button_mobile} variant="outlined">
-          Login
+          <LockOpenIcon color="action" />
         </Button>
       </NavLink>
       <NavLink to={routes.register} className={app_bar_link_decoration}>
@@ -39,7 +48,7 @@ const AuthNav = () => {
           variant="outlined"
           color="primary"
         >
-          Register
+          <PersonAddOutlinedIcon color="action" />
         </Button>
       </NavLink>
     </div>

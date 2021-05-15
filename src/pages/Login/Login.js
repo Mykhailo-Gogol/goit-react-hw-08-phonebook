@@ -1,9 +1,10 @@
+import { login_page_wrapper } from "./Login.module.scss";
+
 import LoginForm from "../../components/LoginForm";
 
 const Login = () => {
   return (
-    <div>
-      <h1>Login page</h1>
+    <div className={login_page_wrapper}>
       <LoginForm />
     </div>
   );

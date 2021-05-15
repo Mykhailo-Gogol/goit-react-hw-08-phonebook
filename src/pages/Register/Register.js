@@ -1,9 +1,10 @@
+import { register_page_wrapper } from "./Register.module.scss";
+
 import RegistrationForm from "../../components/RegistrationForm/";
 
 const Register = () => {
   return (
-    <div>
-      <h1>Register Page</h1>
+    <div className={register_page_wrapper}>
       <RegistrationForm />
     </div>
   );

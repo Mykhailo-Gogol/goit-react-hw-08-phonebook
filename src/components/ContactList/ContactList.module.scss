@@ -15,8 +15,7 @@
   align-items: center;
   justify-content: space-around;
   width: calc(100% / 3 - 40px);
-  margin: 5px 0;
-  border: 1px solid lightblue;
+  border: 2px solid #7cc6fe;
   border-radius: 5px;
   background-color: #fff;
   margin: 10px 20px;
@@ -47,6 +46,13 @@
     height: auto;
     padding: 0;
     margin-bottom: 2px;
+
+    margin: 10px auto;
+  }
+
+  .contact_item:nth-child(3n) {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .contact_text {

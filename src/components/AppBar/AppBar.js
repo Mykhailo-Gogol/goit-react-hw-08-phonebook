@@ -16,6 +16,9 @@ import { useSelector } from "react-redux";
 // Material
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
+import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
+import MenuBookOutlinedIcon from "@material-ui/icons/MenuBookOutlined";
+import AccountBoxIcon from "@material-ui/icons/AccountBox";
 
 // Comps
 import AuthNav from "./AuthNav";
@@ -26,13 +29,37 @@ const useStyles = makeStyles({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    width: 105,
+    width: 50,
     fontSize: 12,
+    background: "#F4FAFF",
+    "&:hover": {
+      background: "#7CC6FE",
+    },
+    "&:active": {
+      background: "#758BFD",
+    },
+  },
+  user_button_mobile: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 300,
+    fontSize: 12,
+    marginLeft: "auto",
+    marginRight: "auto",
+    background: "#F4FAFF",
+    "&:hover": {
+      background: "#7CC6FE",
+    },
+    "&:active": {
+      background: "#758BFD",
+    },
   },
 });
 
 function AppBar() {
   const styles = useStyles();
+  const userEmail = useSelector(authSelectors.userEmailSelector);
   const isAuthenticated = useSelector(authSelectors.isAuthenticatedSelector);
   return (
     <header>
@@ -42,9 +69,9 @@ function AppBar() {
             <Button
               className={styles.button_mobile}
               variant="outlined"
-              color="primary"
+              // color="primary"
             >
-              Home
+              <HomeOutlinedIcon color="action" />
             </Button>
           </NavLink>
           {isAuthenticated ? (
@@ -54,13 +81,26 @@ function AppBar() {
                 variant="outlined"
                 color="primary"
               >
-                Contacts
+                <MenuBookOutlinedIcon color="action" />
               </Button>
             </NavLink>
           ) : null}
         </div>
         {isAuthenticated ? <UserMenu /> : <AuthNav />}
+        {/* User */}
       </nav>
+
+      {isAuthenticated && (
+        <div>
+          <Button
+            className={`${styles.user_button_mobile} ${styles.icon_margin}`}
+            variant="outlined"
+          >
+            <AccountBoxIcon color="action" />
+            <span>{userEmail}</span>
+          </Button>
+        </div>
+      )}
     </header>
   );
 }

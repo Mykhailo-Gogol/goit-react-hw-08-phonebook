@@ -1,13 +1,13 @@
-import { home_title, home_image } from "./Home.module.scss";
+import { home_page_wrapper, home_title, home_icon } from "./Home.module.scss";
 
 // Images
-import HomeImage from "../../images/home.svg";
+import phonebookIcon from "../../images/phonebook.png";
 
 const Home = () => {
   return (
-    <div>
-      <h1 className={home_title}>Home page</h1>
-      <img src={HomeImage} alt="Home page" className={home_image} />
+    <div className={home_page_wrapper}>
+      <h1 className={home_title}>Phonebook</h1>{" "}
+      <img src={phonebookIcon} alt="home page icon" className={home_icon} />
     </div>
   );
 };

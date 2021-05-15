@@ -1,3 +1,5 @@
+import { contacts_page_wrapper } from "./Contacts.module.scss";
+
 // REDUX
 import { useSelector } from "react-redux";
 import contactsSelectors from "../../redux/contacts/contacts-selectors";
@@ -11,8 +13,10 @@ const Contacts = () => {
   const isLoading = useSelector(contactsSelectors.isLoadingSelector);
 
   return (
-    <div style={isLoading ? { filter: "blur(20px)" } : null}>
-      <h1>Contacts</h1>
+    <div
+      style={isLoading ? { filter: "blur(20px)" } : null}
+      className={contacts_page_wrapper}
+    >
       <Form />
       {
         <>

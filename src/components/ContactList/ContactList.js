@@ -15,8 +15,28 @@ import contactsSelectors from "../../redux/contacts/contacts-selectors";
 // Material
 import Button from "@material-ui/core/Button";
 import BackspaceTwoToneIcon from "@material-ui/icons/BackspaceTwoTone";
+import { makeStyles } from "@material-ui/core/styles";
+
+// Styles
+const useStyles = makeStyles({
+  button_mobile: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 50,
+    fontSize: 12,
+    background: "#F4FAFF",
+    "&:hover": {
+      background: "#7CC6FE",
+    },
+    "&:active": {
+      background: "#758BFD",
+    },
+  },
+});
 
 const ContactList = () => {
+  const styles = useStyles();
   const dispatch = useDispatch();
   const contacts = useSelector(contactsSelectors.filteredContactsSelector);
 
@@ -32,7 +52,7 @@ const ContactList = () => {
   return (
     <>
       {contacts.length > 0 ? (
-        <ol className={contact_list}>
+        <ul className={contact_list}>
           {contacts.map(({ name, number, id, favourite }) => {
             return (
               <li key={name} className={contact_item}>
@@ -42,18 +62,18 @@ const ContactList = () => {
                 </p>
                 <div className={button_group}>
                   <Button
-                    className="delete-button"
+                    className={styles.button_mobile}
                     onClick={() => handleDeleteContact(id)}
                   >
-                    <BackspaceTwoToneIcon color="primary" />
+                    <BackspaceTwoToneIcon color="action" />
                   </Button>
                 </div>
               </li>
             );
           })}
-        </ol>
+        </ul>
       ) : (
-        <p>Sorry, no matches found.</p>
+        <p>No contacts</p>
       )}
     </>
   );

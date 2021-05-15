@@ -4,6 +4,8 @@ import { form_input, contact_form } from "./RegistrationForm.module.scss";
 // Meterial
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
+import PersonAddOutlinedIcon from "@material-ui/icons/PersonAddOutlined";
 
 // Toastify
 import { ToastContainer } from "react-toastify";
@@ -17,7 +19,26 @@ import {
 import { useDispatch } from "react-redux";
 import authOperations from "../../redux/auth/auth-operations";
 
+// Styles
+const useStyles = makeStyles({
+  button_mobile: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 300,
+    fontSize: 12,
+    background: "#F4FAFF",
+    "&:hover": {
+      background: "#7CC6FE",
+    },
+    "&:active": {
+      background: "#758BFD",
+    },
+  },
+});
+
 const RegistrationForm = () => {
+  const styles = useStyles();
   const dispatch = useDispatch();
 
   const [credentials, setCredentials] = useState({
@@ -49,9 +70,8 @@ const RegistrationForm = () => {
   };
 
   const formSubmitHandler = ({ name, email, password }) => {
-    const testName = /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/.test(
-      name
-    );
+    const testName =
+      /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/.test(name);
 
     const testEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
@@ -115,8 +135,12 @@ const RegistrationForm = () => {
           required
           autoComplete="on"
         />
-        <Button variant="contained" type="submit">
-          Register
+        <Button
+          variant="contained"
+          type="submit"
+          className={styles.button_mobile}
+        >
+          <PersonAddOutlinedIcon color="action" />
         </Button>
       </form>
       <ToastContainer />
