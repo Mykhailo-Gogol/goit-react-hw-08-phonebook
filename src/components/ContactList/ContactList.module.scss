@@ -36,6 +36,10 @@
   padding-left: 20px;
 }
 
+.no_contacts {
+  color: white;
+}
+
 @media (max-width: 767px) {
   .contact_list {
     flex-direction: column;

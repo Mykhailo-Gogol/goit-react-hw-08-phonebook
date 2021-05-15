@@ -5,6 +5,7 @@ import {
   contact_text,
   button_group,
   contact_list,
+  no_contacts,
 } from "./ContactList.module.scss";
 
 // Redux
@@ -27,7 +28,7 @@ const useStyles = makeStyles({
     fontSize: 12,
     background: "#F4FAFF",
     "&:hover": {
-      background: "#7CC6FE",
+      background: "#758BFD",
     },
     "&:active": {
       background: "#758BFD",
@@ -73,7 +74,7 @@ const ContactList = () => {
           })}
         </ul>
       ) : (
-        <p>No contacts</p>
+        <p className={no_contacts}>No contacts</p>
       )}
     </>
   );

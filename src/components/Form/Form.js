@@ -27,9 +27,9 @@ const useStyles = makeStyles({
     justifyContent: "center",
     width: 300,
     fontSize: 12,
-    background: "#F4FAFF",
+    background: "#758BFD",
     "&:hover": {
-      background: "#7CC6FE",
+      background: "#758BFD",
     },
     "&:active": {
       background: "#758BFD",
