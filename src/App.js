@@ -37,6 +37,11 @@ const RegisterPage = lazy(() =>
 const NotFoundPage = lazy(() =>
   import("./pages/NotFoundPage" /* webpackChunkName: "404-page" */)
 );
+const UserInfoPage = lazy(() =>
+  import(
+    "./pages/UserInfo/UserInfo.tsx" /* webpackChunkName: "userInfo-page" */
+  )
+);
 
 const App = () => {
   const dispatch = useDispatch();
@@ -71,6 +76,11 @@ const App = () => {
             <PrivateRoute
               path={routes.contacts}
               component={ContactsPage}
+              redirectTo="/login"
+            />
+            <PrivateRoute
+              path={routes.userInfo}
+              component={UserInfoPage}
               redirectTo="/login"
             />
             <Route component={NotFoundPage} />

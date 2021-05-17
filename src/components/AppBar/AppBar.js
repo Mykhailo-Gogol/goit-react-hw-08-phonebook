@@ -92,13 +92,15 @@ function AppBar() {
 
       {isAuthenticated && (
         <div>
-          <Button
-            className={`${styles.user_button_mobile} ${styles.icon_margin}`}
-            variant="outlined"
-          >
-            <AccountBoxIcon color="action" />
-            <span>{userEmail}</span>
-          </Button>
+          <NavLink to={routes.userInfo} className={app_bar_link}>
+            <Button
+              className={`${styles.user_button_mobile} ${styles.icon_margin}`}
+              variant="outlined"
+            >
+              <AccountBoxIcon color="action" />
+              <span>{userEmail}</span>
+            </Button>
+          </NavLink>
         </div>
       )}
     </header>
