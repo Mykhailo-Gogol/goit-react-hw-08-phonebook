@@ -7,6 +7,12 @@
   display: block;
   width: 200px;
   height: auto;
+  transition: 250ms;
+}
+
+.home_icon:hover {
+  transform: scale(1.1);
+  transition: 250ms;
 }
 
 .home_page_wrapper {
@@ -16,4 +22,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.user_name {
+  color: white;
 }

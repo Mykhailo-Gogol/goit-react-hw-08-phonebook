@@ -11,8 +11,8 @@ import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 
 const UserInfo: React.FC = () => {
-  const userName = useSelector(authSelectors.userNameSelector);
-  const userEmail = useSelector(authSelectors.userEmailSelector);
+  const userName: string = useSelector(authSelectors.userNameSelector);
+  const userEmail: string = useSelector(authSelectors.userEmailSelector);
 
   return (
     <div className={scss_styles.user_page_wrapper}>
