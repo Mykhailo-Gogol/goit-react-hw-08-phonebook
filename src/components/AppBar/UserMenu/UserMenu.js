@@ -19,10 +19,10 @@ const useStyles = makeStyles({
     fontSize: 12,
     background: "#F4FAFF",
     "&:hover": {
-      background: "#7CC6FE",
+      background: "#F4FAFF",
     },
     "&:active": {
-      background: "#758BFD",
+      background: "#F4FAFF",
     },
   },
 });

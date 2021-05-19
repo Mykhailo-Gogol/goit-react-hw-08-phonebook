@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   app_bar_nav,
   app_bar_link,
@@ -19,10 +21,13 @@ import { makeStyles } from "@material-ui/core/styles";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 import MenuBookOutlinedIcon from "@material-ui/icons/MenuBookOutlined";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
+// Modal
+import ControlPointSharpIcon from "@material-ui/icons/ControlPointSharp";
 
 // Comps
 import AuthNav from "./AuthNav";
 import UserMenu from "./UserMenu";
+import Modal from "../Modal";
 
 const useStyles = makeStyles({
   button_mobile: {
@@ -31,12 +36,13 @@ const useStyles = makeStyles({
     justifyContent: "center",
     width: 50,
     fontSize: 12,
+    marginRight: 20,
     background: "#F4FAFF",
     "&:hover": {
-      background: "#7CC6FE",
+      background: "#F4FAFF",
     },
     "&:active": {
-      background: "#758BFD",
+      background: "#F4FAFF",
     },
   },
   user_button_mobile: {
@@ -49,16 +55,18 @@ const useStyles = makeStyles({
     marginRight: "auto",
     background: "#F4FAFF",
     "&:hover": {
-      background: "#7CC6FE",
+      // background: "#7CC6FE",
     },
     "&:active": {
-      background: "#758BFD",
+      // background: "#F4FAFF",
     },
   },
 });
 
 function AppBar() {
   const styles = useStyles();
+  const [open, setOpen] = useState(false);
+
   const userEmail = useSelector(authSelectors.userEmailSelector);
   const isAuthenticated = useSelector(authSelectors.isAuthenticatedSelector);
   return (
@@ -74,6 +82,17 @@ function AppBar() {
               <HomeOutlinedIcon color="action" />
             </Button>
           </NavLink>
+          {/* Modal */}
+          <Modal open={open} onClose={setOpen} />
+          <Button
+            variant="outlined"
+            className={styles.button_mobile}
+            onClick={() => {
+              setOpen(true);
+            }}
+          >
+            <ControlPointSharpIcon color="action" />
+          </Button>
           {isAuthenticated ? (
             <NavLink to={routes.contacts} className={app_bar_link}>
               <Button
