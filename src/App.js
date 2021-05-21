@@ -21,6 +21,9 @@ import { Switch, Route } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
 
+// Toastify
+import { ToastContainer } from "react-toastify";
+
 // Lazy
 const HomePage = lazy(() =>
   import("./pages/Home/Home" /* webpackChunkName: "home-page" */)
@@ -89,6 +92,9 @@ const App = () => {
       </div>
 
       {isLoading && <Loader />}
+
+      {/* toast */}
+      <ToastContainer />
     </div>
   );
 };

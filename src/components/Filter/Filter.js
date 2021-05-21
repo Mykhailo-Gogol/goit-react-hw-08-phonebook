@@ -1,4 +1,4 @@
-import { filter_input } from "./Filter.module.scss";
+import { filter_input, filter_wrapper } from "./Filter.module.scss";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
@@ -17,7 +17,7 @@ const Filter = () => {
     return dispatch(contactsActions.onChangeFilter(event.target.value));
   };
   return (
-    <div>
+    <div className={filter_wrapper}>
       <Input
         type="text"
         placeholder="Search contact"

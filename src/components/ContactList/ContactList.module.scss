@@ -43,6 +43,9 @@
 @media (max-width: 767px) {
   .contact_list {
     flex-direction: column;
+    flex-wrap: nowrap;
+    height: 500px;
+    overflow-y: scroll;
   }
 
   .contact_item {

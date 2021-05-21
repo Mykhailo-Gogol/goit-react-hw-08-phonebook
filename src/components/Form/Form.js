@@ -8,7 +8,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import AddIcon from "@material-ui/icons/Add";
 
 // Toastify
-import { ToastContainer } from "react-toastify";
 import {
   nameInputValidation,
   numberInputValidation,
@@ -129,7 +128,6 @@ const Form = ({ onClose }) => {
           <AddIcon color="action" />
         </Button>
       </form>
-      <ToastContainer />
     </>
   );
 };

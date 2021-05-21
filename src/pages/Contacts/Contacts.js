@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import contactsSelectors from "../../redux/contacts/contacts-selectors";
 
 // Comps
-import Form from "../../components/Form";
 import Filter from "../../components/Filter";
 import ContactList from "../../components/ContactList";
 
@@ -17,13 +16,8 @@ const Contacts = () => {
       style={isLoading ? { filter: "blur(20px)" } : null}
       className={contacts_page_wrapper}
     >
-      <Form />
-      {
-        <>
-          <Filter />
-          <ContactList />
-        </>
-      }
+      <Filter />
+      <ContactList />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import { register_page_wrapper } from "./Register.module.scss";
 
+// Comps
 import RegistrationForm from "../../components/RegistrationForm/";
 
 const Register = () => {
