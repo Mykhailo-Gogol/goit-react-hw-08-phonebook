@@ -6,7 +6,7 @@ import { useEffect, Suspense, lazy } from "react";
 
 // Comps
 import Loader from "./components/Loader";
-import AppBar from "./components/AppBar";
+import AppBar from "./components/AppBar/AppBar";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";

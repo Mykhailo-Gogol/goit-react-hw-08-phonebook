@@ -1,12 +1,13 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 import {
   app_bar_nav,
-  app_bar_link,
   app_bar_link_decoration,
   main_nav,
   left_user_menu,
-} from "./AppBar.module.scss";
+  button_mobile,
+  user_button_mobile,
+} from "./AppBarStyle";
 
 // Router
 import { routes } from "../../routes/routes";
@@ -18,7 +19,6 @@ import { useSelector } from "react-redux";
 
 // Material
 import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 import MenuBookOutlinedIcon from "@material-ui/icons/MenuBookOutlined";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
@@ -26,65 +26,21 @@ import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import ControlPointSharpIcon from "@material-ui/icons/ControlPointSharp";
 
 // Comps
-import AuthNav from "./AuthNav";
-import UserMenu from "./UserMenu";
+import AuthNav from "./AuthNav/AuthNav";
+import UserMenu from "./UserMenu/UserMenu";
 import Modal from "../Modal";
 
-const useStyles = makeStyles({
-  button_mobile: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width: 50,
-    fontSize: 12,
-    marginRight: 20,
-    background: "#F4FAFF",
-    transition: "200ms",
-
-    "&:hover": {
-      background: "#F4FAFF",
-      transform: "scale(1.1)",
-      transition: "200ms",
-    },
-
-    "&:active": {
-      background: "#F4FAFF",
-    },
-  },
-  user_button_mobile: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width: 300,
-    fontSize: 12,
-    marginLeft: "auto",
-    marginRight: "auto",
-    background: "#F4FAFF",
-    "&:hover": {
-      background: "#F4FAFF",
-    },
-    "&:active": {
-      background: "#F4FAFF",
-    },
-  },
-});
-
-function AppBar() {
-  const styles = useStyles();
+const AppBar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const userEmail = useSelector(authSelectors.userEmailSelector);
   const isAuthenticated = useSelector(authSelectors.isAuthenticatedSelector);
   return (
     <header>
-      <nav className={app_bar_nav}>
-        <div className={main_nav}>
-          <NavLink exact to={routes.home} className={app_bar_link_decoration}>
-            <Button
-              className={styles.button_mobile}
-              variant="outlined"
-              // color="primary"
-            >
+      <nav style={app_bar_nav}>
+        <div style={main_nav}>
+          <NavLink exact to={routes.home} style={app_bar_link_decoration}>
+            <Button style={button_mobile} variant="outlined">
               <HomeOutlinedIcon color="action" />
             </Button>
           </NavLink>
@@ -93,10 +49,10 @@ function AppBar() {
           <Modal open={isOpen} onClose={setIsOpen} />
 
           {isAuthenticated ? (
-            <div className={left_user_menu}>
-              <NavLink to={routes.contacts} className={app_bar_link}>
+            <div style={left_user_menu}>
+              <NavLink to={routes.contacts} style={app_bar_link_decoration}>
                 <Button
-                  className={styles.button_mobile}
+                  style={button_mobile}
                   variant="outlined"
                   color="primary"
                 >
@@ -105,7 +61,7 @@ function AppBar() {
               </NavLink>
               <Button
                 variant="outlined"
-                className={styles.button_mobile}
+                style={button_mobile}
                 onClick={() => {
                   setIsOpen(true);
                 }}
@@ -116,16 +72,13 @@ function AppBar() {
           ) : null}
         </div>
         {isAuthenticated ? <UserMenu /> : <AuthNav />}
-        {/* User */}
       </nav>
 
+      {/* User */}
       {isAuthenticated && (
         <div>
-          <NavLink to={routes.userInfo} className={app_bar_link}>
-            <Button
-              className={`${styles.user_button_mobile} ${styles.icon_margin}`}
-              variant="outlined"
-            >
+          <NavLink to={routes.userInfo} style={app_bar_link_decoration}>
+            <Button style={user_button_mobile} variant="outlined">
               <AccountBoxIcon color="action" />
               <span>{userEmail}</span>
             </Button>
@@ -134,6 +87,6 @@ function AppBar() {
       )}
     </header>
   );
-}
+};
 
 export default AppBar;
