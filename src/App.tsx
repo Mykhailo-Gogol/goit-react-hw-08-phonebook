@@ -1,4 +1,4 @@
-import { container } from "./App.module.scss";
+import scss_styles from "./App.module.scss";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 // React
@@ -6,7 +6,7 @@ import { useEffect, Suspense, lazy } from "react";
 
 // Comps
 import Loader from "./components/Loader";
-import AppBar from "./components/AppBar/";
+import AppBar from "./components/AppBar";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
@@ -14,7 +14,7 @@ import contactsSelectors from "./redux/contacts/contacts-selectors";
 import authOperations from "./redux/auth/auth-operations";
 
 // Router
-import routes from "./routes";
+import { routes } from "./routes/routes";
 import { Switch, Route } from "react-router-dom";
 
 // Routes
@@ -25,25 +25,26 @@ import PublicRoute from "./components/PublicRoute";
 import { ToastContainer } from "react-toastify";
 
 // Lazy
-const HomePage = lazy(() =>
-  import("./pages/Home/Home" /* webpackChunkName: "home-page" */)
+const HomePage = lazy(
+  () => import("./pages/Home/Home" /* webpackChunkName: "home-page" */)
 );
-const ContactsPage = lazy(() =>
-  import("./pages/Contacts/Contacts" /* webpackChunkName: "contacts-page" */)
+const ContactsPage = lazy(
+  () =>
+    import("./pages/Contacts/Contacts" /* webpackChunkName: "contacts-page" */)
 );
-const LoginPage = lazy(() =>
-  import("./pages/Login/Login" /* webpackChunkName: "login-page" */)
+const LoginPage = lazy(
+  () => import("./pages/Login/Login" /* webpackChunkName: "login-page" */)
 );
-const RegisterPage = lazy(() =>
-  import("./pages/Register/Register" /* webpackChunkName: "register-page" */)
+const RegisterPage = lazy(
+  () =>
+    import("./pages/Register/Register" /* webpackChunkName: "register-page" */)
 );
-const NotFoundPage = lazy(() =>
-  import("./pages/NotFoundPage" /* webpackChunkName: "404-page" */)
+const NotFoundPage = lazy(
+  () => import("./pages/NotFoundPage" /* webpackChunkName: "404-page" */)
 );
-const UserInfoPage = lazy(() =>
-  import(
-    "./pages/UserInfo/UserInfo.tsx" /* webpackChunkName: "userInfo-page" */
-  )
+const UserInfoPage = lazy(
+  () =>
+    import("./pages/UserInfo/UserInfo" /* webpackChunkName: "userInfo-page" */)
 );
 
 const App = () => {
@@ -56,7 +57,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className={container}>
+    <div className={scss_styles.container}>
       <div>
         <AppBar />
       </div>

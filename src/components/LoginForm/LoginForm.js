@@ -13,7 +13,7 @@ import { ToastContainer } from "react-toastify";
 import {
   emailInputValidation,
   passwordInputValidation,
-} from "../../utils/error-notifications/error-notifications";
+} from "../../utils/error-notifications/error-notifications.ts";
 
 // Redux
 import { useDispatch } from "react-redux";

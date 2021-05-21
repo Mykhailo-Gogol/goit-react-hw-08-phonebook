@@ -3,8 +3,8 @@ import contactsActions from "./contacts-actions";
 import {
   addContactSuccess,
   deleteContactSuccess,
-} from "../../utils/success-notifications/success-notifications.js";
-import { connectionErrorValidation } from "../../utils/error-notifications/error-notifications.js";
+} from "../../utils/success-notifications/success-notifications";
+import { connectionErrorValidation } from "../../utils/error-notifications/error-notifications";
 
 axios.defaults.baseURL = "https://connections-api.herokuapp.com";
 

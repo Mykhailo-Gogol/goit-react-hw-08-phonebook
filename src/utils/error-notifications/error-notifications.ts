@@ -63,7 +63,7 @@ export const numberInputValidation = () =>
     }
   );
 
-export const contactDuplicateValidation = (name) =>
+export const contactDuplicateValidation = (name: string) =>
   toast.warn(`${name} is already in contacts!`, {
     position: "bottom-right",
     autoClose: 3000,
@@ -74,7 +74,7 @@ export const contactDuplicateValidation = (name) =>
     progress: undefined,
   });
 
-export const connectionErrorValidation = (message) =>
+export const connectionErrorValidation = (message: string) =>
   toast.error(`${message}`, {
     position: "bottom-right",
     autoClose: 2000,

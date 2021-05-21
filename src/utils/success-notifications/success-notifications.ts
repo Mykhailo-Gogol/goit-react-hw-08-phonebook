@@ -34,7 +34,7 @@ export const logoutSuccess = () =>
     progress: undefined,
   });
 
-export const addContactSuccess = (name) =>
+export const addContactSuccess = (name: string) =>
   toast.success(`${name} added`, {
     position: "bottom-right",
     autoClose: 2000,

@@ -9,7 +9,7 @@ import {
 } from "./AppBar.module.scss";
 
 // Router
-import routes from "../../routes";
+import { routes } from "../../routes/routes";
 import { NavLink } from "react-router-dom";
 
 // Redux

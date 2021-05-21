@@ -1,4 +1,4 @@
-import { contacts_page_wrapper } from "./Contacts.module.scss";
+import scss_styles from "./Contacts.module.scss";
 
 // REDUX
 import { useSelector } from "react-redux";
@@ -13,8 +13,8 @@ const Contacts = () => {
 
   return (
     <div
-      style={isLoading ? { filter: "blur(20px)" } : null}
-      className={contacts_page_wrapper}
+      style={isLoading ? { filter: "blur(20px)" } : { filter: "blur(0px)" }}
+      className={scss_styles.contacts_page_wrapper}
     >
       <Filter />
       <ContactList />

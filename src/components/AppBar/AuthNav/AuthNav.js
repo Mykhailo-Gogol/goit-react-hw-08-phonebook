@@ -11,7 +11,7 @@ import PersonAddOutlinedIcon from "@material-ui/icons/PersonAddOutlined";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 
 // Router
-import routes from "../../../routes";
+import { routes } from "../../../routes/routes";
 import { NavLink } from "react-router-dom";
 
 // Styles
