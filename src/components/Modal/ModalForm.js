@@ -21,7 +21,8 @@ const ModalForm = ({ open, onClose }) => {
         }}
       >
         <div className={styles.modal_container}>
-          <Form />
+          <h4 style={{ textAlign: "center" }}>Add contact</h4>
+          <Form onClose={onClose} />
         </div>
       </Modal>
       <Fade in={open}>

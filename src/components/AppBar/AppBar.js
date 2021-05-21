@@ -5,6 +5,7 @@ import {
   app_bar_link,
   app_bar_link_decoration,
   main_nav,
+  left_user_menu,
 } from "./AppBar.module.scss";
 
 // Router
@@ -38,9 +39,14 @@ const useStyles = makeStyles({
     fontSize: 12,
     marginRight: 20,
     background: "#F4FAFF",
+    transition: "200ms",
+
     "&:hover": {
       background: "#F4FAFF",
+      transform: "scale(1.1)",
+      transition: "200ms",
     },
+
     "&:active": {
       background: "#F4FAFF",
     },
@@ -55,17 +61,17 @@ const useStyles = makeStyles({
     marginRight: "auto",
     background: "#F4FAFF",
     "&:hover": {
-      // background: "#7CC6FE",
+      background: "#F4FAFF",
     },
     "&:active": {
-      // background: "#F4FAFF",
+      background: "#F4FAFF",
     },
   },
 });
 
 function AppBar() {
   const styles = useStyles();
-  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const userEmail = useSelector(authSelectors.userEmailSelector);
   const isAuthenticated = useSelector(authSelectors.isAuthenticatedSelector);
@@ -82,27 +88,31 @@ function AppBar() {
               <HomeOutlinedIcon color="action" />
             </Button>
           </NavLink>
+
           {/* Modal */}
-          <Modal open={open} onClose={setOpen} />
-          <Button
-            variant="outlined"
-            className={styles.button_mobile}
-            onClick={() => {
-              setOpen(true);
-            }}
-          >
-            <ControlPointSharpIcon color="action" />
-          </Button>
+          <Modal open={isOpen} onClose={setIsOpen} />
+
           {isAuthenticated ? (
-            <NavLink to={routes.contacts} className={app_bar_link}>
+            <div className={left_user_menu}>
+              <NavLink to={routes.contacts} className={app_bar_link}>
+                <Button
+                  className={styles.button_mobile}
+                  variant="outlined"
+                  color="primary"
+                >
+                  <MenuBookOutlinedIcon color="action" />
+                </Button>
+              </NavLink>
               <Button
-                className={styles.button_mobile}
                 variant="outlined"
-                color="primary"
+                className={styles.button_mobile}
+                onClick={() => {
+                  setIsOpen(true);
+                }}
               >
-                <MenuBookOutlinedIcon color="action" />
+                <ControlPointSharpIcon color="action" />
               </Button>
-            </NavLink>
+            </div>
           ) : null}
         </div>
         {isAuthenticated ? <UserMenu /> : <AuthNav />}

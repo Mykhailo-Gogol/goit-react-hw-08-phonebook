@@ -37,7 +37,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Form = () => {
+const Form = ({ onClose }) => {
   const styles = useStyles();
   const contacts = useSelector(contactsSelectors.contactsReselect);
   const dispatch = useDispatch();
@@ -59,6 +59,7 @@ const Form = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     formSubmitHandler(contact);
+    onClose && onClose(false);
   };
 
   const reset = () => {
