@@ -6,7 +6,7 @@ import contactsSelectors from "../../redux/contacts/contacts-selectors";
 
 // Comps
 import Filter from "../../components/Filter";
-import ContactList from "../../components/ContactList";
+import ContactList from "../../components/ContactList/ContactList";
 
 const Contacts = () => {
   const isLoading = useSelector(contactsSelectors.isLoadingSelector);

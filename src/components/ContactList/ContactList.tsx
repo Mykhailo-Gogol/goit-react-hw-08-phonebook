@@ -1,12 +1,16 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
+import { useMedia } from "react-use";
 
 import {
   contact_item,
   contact_text,
-  button_group,
   contact_list,
   no_contacts,
-} from "./ContactList.module.scss";
+  button_mobile,
+  contact_list_mobile,
+  contact_item_mobile,
+  contact_text_mobile,
+} from "./ContactListStyle";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
@@ -16,28 +20,9 @@ import contactsSelectors from "../../redux/contacts/contacts-selectors";
 // Material
 import Button from "@material-ui/core/Button";
 import BackspaceTwoToneIcon from "@material-ui/icons/BackspaceTwoTone";
-import { makeStyles } from "@material-ui/core/styles";
 
-// Styles
-const useStyles = makeStyles({
-  button_mobile: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width: 50,
-    fontSize: 12,
-    background: "#F4FAFF",
-    "&:hover": {
-      background: "#758BFD",
-    },
-    "&:active": {
-      background: "#758BFD",
-    },
-  },
-});
-
-const ContactList = () => {
-  const styles = useStyles();
+const ContactList: React.FC = () => {
+  const isMobile = useMedia("(max-width: 767px)");
   const dispatch = useDispatch();
   const contacts = useSelector(contactsSelectors.filteredContactsSelector);
 
@@ -46,24 +31,29 @@ const ContactList = () => {
     // eslint-disable-next-line
   }, []);
 
-  const handleDeleteContact = (id) => {
+  const handleDeleteContact = (id: number) => {
     return dispatch(contactsOperations.deleteContactOperation(id));
   };
+
+  type TContact = { name: string; number: number; id: number };
 
   return (
     <>
       {contacts.length > 0 ? (
-        <ul className={contact_list}>
-          {contacts.map(({ name, number, id, favourite }) => {
+        <ul style={isMobile ? contact_list_mobile : contact_list}>
+          {contacts.map(({ name, number, id }: TContact) => {
             return (
-              <li key={name} className={contact_item}>
-                <p className={contact_text}>
+              <li
+                key={name}
+                style={isMobile ? contact_item_mobile : contact_item}
+              >
+                <p style={isMobile ? contact_text_mobile : contact_text}>
                   <span>{name}</span>
                   <span>{number}</span>
                 </p>
-                <div className={button_group}>
+                <div>
                   <Button
-                    className={styles.button_mobile}
+                    style={button_mobile}
                     onClick={() => handleDeleteContact(id)}
                   >
                     <BackspaceTwoToneIcon color="action" />
@@ -74,7 +64,7 @@ const ContactList = () => {
           })}
         </ul>
       ) : (
-        <p className={no_contacts}>No contacts</p>
+        <p style={no_contacts}>No contacts</p>
       )}
     </>
   );
