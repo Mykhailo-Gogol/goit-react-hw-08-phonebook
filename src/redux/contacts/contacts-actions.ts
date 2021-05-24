@@ -16,7 +16,7 @@ const onDeleteContactSuccess = createAction("contacts/DELETE_CONTACT_S");
 const onDeleteContactFailure = createAction("contacts/DELETE_CONTACT_F");
 
 // FILTER
-const onChangeFilter = createAction("contacts/FILTER_CONTACT");
+const onChangeFilter = createAction<string>("contacts/FILTER_CONTACT");
 
 const contactsActions = {
   onFetchContactsRequest,

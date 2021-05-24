@@ -62,9 +62,10 @@ export const contact_list_mobile = {
   flexDirection: "column",
   flexWrap: "nowrap",
   width: 300,
-  height: 500,
+  height: 300,
   paddingLeft: 0,
   margin: "0 auto",
+  overflowY: "scroll",
 } as React.CSSProperties;
 
 export const contact_item_mobile = {

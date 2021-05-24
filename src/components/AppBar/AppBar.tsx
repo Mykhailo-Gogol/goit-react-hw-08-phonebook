@@ -26,8 +26,8 @@ import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import ControlPointSharpIcon from "@material-ui/icons/ControlPointSharp";
 
 // Comps
-import AuthNav from "./AuthNav/AuthNav";
-import UserMenu from "./UserMenu/UserMenu";
+import AuthNav from "./AuthNav";
+import UserMenu from "./UserMenu";
 import Modal from "../Modal";
 
 const AppBar: React.FC = () => {

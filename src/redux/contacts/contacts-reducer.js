@@ -14,8 +14,8 @@ const contacts = createReducer(contactsState.items, {
 
   // ADD
   [contactsActions.onAddContactSuccess]: (state, { type, payload }) => [
-    ...state,
     payload,
+    ...state,
   ],
 
   // DELETE

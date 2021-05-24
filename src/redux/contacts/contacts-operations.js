@@ -1,5 +1,5 @@
 import axios from "axios";
-import contactsActions from "./contacts-actions";
+import contactsActions from "./contacts-actions.ts";
 import {
   addContactSuccess,
   deleteContactSuccess,
