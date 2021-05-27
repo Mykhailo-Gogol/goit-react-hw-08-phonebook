@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 import authSelectors from "../../redux/auth/auth-selectors";
 
 const Home: React.FC = () => {
-  const userName = useSelector(authSelectors.userNameSelector);
+  const userName: string = useSelector(authSelectors.userNameSelector);
   return (
     <div className={scss_styles.home_page_wrapper}>
       {userName && (

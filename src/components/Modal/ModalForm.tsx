@@ -1,3 +1,5 @@
+import React from "react";
+
 import { modal_container } from "./ModalFormStyle";
 
 // Material
@@ -7,13 +9,12 @@ import Fade from "@material-ui/core/Fade";
 // Comps
 import Form from "../Form";
 
-const ModalForm = ({
-  open,
-  onClose,
-}: {
+type TModalProps = {
   open: boolean;
   onClose: (onClose: boolean) => void;
-}) => {
+};
+
+const ModalForm: React.FC<TModalProps> = ({ open, onClose }: TModalProps) => {
   return (
     <div>
       <Modal

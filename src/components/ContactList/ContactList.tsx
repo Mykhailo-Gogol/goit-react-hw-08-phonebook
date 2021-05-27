@@ -21,10 +21,18 @@ import contactsSelectors from "../../redux/contacts/contacts-selectors";
 import Button from "@material-ui/core/Button";
 import BackspaceTwoToneIcon from "@material-ui/icons/BackspaceTwoTone";
 
+type TContact = {
+  name: string;
+  number: number;
+  id: number;
+};
+
 const ContactList: React.FC = () => {
   const isMobile = useMedia("(max-width: 767px)");
   const dispatch = useDispatch();
-  const contacts = useSelector(contactsSelectors.filteredContactsSelector);
+  const contacts: TContact[] = useSelector(
+    contactsSelectors.filteredContactsSelector
+  );
 
   useEffect(() => {
     dispatch(contactsOperations.fetchContactOperation());
@@ -34,8 +42,6 @@ const ContactList: React.FC = () => {
   const handleDeleteContact = (id: number) => {
     return dispatch(contactsOperations.deleteContactOperation(id));
   };
-
-  type TContact = { name: string; number: number; id: number };
 
   return (
     <>

@@ -33,8 +33,10 @@ import Modal from "../Modal";
 const AppBar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const userEmail = useSelector(authSelectors.userEmailSelector);
-  const isAuthenticated = useSelector(authSelectors.isAuthenticatedSelector);
+  const userEmail: string = useSelector(authSelectors.userEmailSelector);
+  const isAuthenticated: boolean = useSelector(
+    authSelectors.isAuthenticatedSelector
+  );
   return (
     <header>
       <nav style={app_bar_nav}>

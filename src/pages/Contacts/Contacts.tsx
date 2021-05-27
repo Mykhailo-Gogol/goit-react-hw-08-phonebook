@@ -9,7 +9,7 @@ import Filter from "../../components/Filter";
 import ContactList from "../../components/ContactList";
 
 const Contacts = () => {
-  const isLoading = useSelector(contactsSelectors.isLoadingSelector);
+  const isLoading: boolean = useSelector(contactsSelectors.isLoadingSelector);
 
   return (
     <div

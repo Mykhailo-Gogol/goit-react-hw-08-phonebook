@@ -11,14 +11,14 @@ import contactsSelectors from "../../redux/contacts/contacts-selectors";
 // Material
 import Input from "@material-ui/core/Input";
 
-type TEvent = React.ChangeEvent<HTMLInputElement>;
+type TChangeEvent = React.ChangeEvent<HTMLInputElement>;
 
 const Filter: React.FC = () => {
-  const filter = useSelector(contactsSelectors.filterSelector);
+  const filter: string = useSelector(contactsSelectors.filterSelector);
 
   const dispatch = useDispatch<Dispatch>();
 
-  const handleInputChange = (event: TEvent) => {
+  const handleInputChange = (event: TChangeEvent) => {
     return dispatch(contactsActions.onChangeFilter(event.target.value));
   };
   return (

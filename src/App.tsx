@@ -49,7 +49,7 @@ const UserInfoPage = lazy(
 
 const App = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(contactsSelectors.isLoadingSelector);
+  const isLoading: boolean = useSelector(contactsSelectors.isLoadingSelector);
 
   useEffect(() => {
     dispatch(authOperations.getCurrentUser());
