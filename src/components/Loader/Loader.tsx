@@ -1,16 +1,15 @@
-import Spinner from 'react-loader-spinner';
-import { loader } from './Loader.module.scss';
+import Spinner from "react-loader-spinner";
+import { loader } from "./LoaderStyle";
 
 const Loader = () => {
   return (
-    <div>
+    <div style={loader}>
       <Spinner
         type="Circles"
         color="#00BFFF"
         height={150}
         width={150}
         timeout={3000}
-        className={loader}
       />
     </div>
   );

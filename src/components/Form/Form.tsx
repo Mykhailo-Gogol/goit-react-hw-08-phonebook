@@ -1,10 +1,9 @@
-import { useState } from "react";
-import { form_input, contact_form } from "./Form.module.scss";
+import React, { useState } from "react";
+import { form_input, contact_form, button_mobile } from "./FormStyle";
 
 // Meterial
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
 import AddIcon from "@material-ui/icons/Add";
 
 // Toastify
@@ -19,25 +18,15 @@ import { useSelector, useDispatch } from "react-redux";
 import contactsOperations from "../../redux/contacts/contacts-operations";
 import contactsSelectors from "../../redux/contacts/contacts-selectors";
 
-const useStyles = makeStyles({
-  button_mobile: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width: 300,
-    fontSize: 12,
-    background: "#758BFD",
-    "&:hover": {
-      background: "#758BFD",
-    },
-    "&:active": {
-      background: "#758BFD",
-    },
-  },
-});
+type TFormProps = {
+  onClose: (onClose: boolean) => void;
+};
 
-const Form = ({ onClose }) => {
-  const styles = useStyles();
+const Form: React.FC<TFormProps> = ({
+  onClose,
+}: {
+  onClose: (onClose: boolean) => void;
+}) => {
   const contacts = useSelector(contactsSelectors.contactsReselect);
   const dispatch = useDispatch();
 
@@ -46,7 +35,7 @@ const Form = ({ onClose }) => {
     number: "+380",
   });
 
-  const handleInputChange = (event) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
     setContact({
@@ -55,7 +44,7 @@ const Form = ({ onClose }) => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     formSubmitHandler(contact);
     onClose && onClose(false);
@@ -68,7 +57,13 @@ const Form = ({ onClose }) => {
     });
   };
 
-  const formSubmitHandler = ({ name, number }) => {
+  const formSubmitHandler = ({
+    name,
+    number,
+  }: {
+    name: string;
+    number: string;
+  }) => {
     const testName =
       /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/.test(name);
 
@@ -77,7 +72,11 @@ const Form = ({ onClose }) => {
         number
       );
 
-    if (contacts.some((contact) => contact.name === name)) {
+    if (
+      contacts.some(
+        (contact: { name: string; number: string }) => contact.name === name
+      )
+    ) {
       contactDuplicateValidation(name);
     } else if (testName !== true) {
       nameInputValidation();
@@ -92,14 +91,14 @@ const Form = ({ onClose }) => {
   return (
     <>
       <form
-        className={contact_form}
+        style={contact_form}
         noValidate
         autoComplete="off"
         onSubmit={handleSubmit}
       >
         <Input
           placeholder="Name"
-          className={form_input}
+          style={form_input}
           inputProps={{ "aria-label": "contact name" }}
           type="text"
           onChange={handleInputChange}
@@ -107,11 +106,11 @@ const Form = ({ onClose }) => {
           value={contact.name}
           id="name"
           required
-          variant="outlined"
+          // variant="outlined"
         />
         <Input
           placeholder="Number"
-          className={form_input}
+          style={form_input}
           inputProps={{ "aria-label": "contact number" }}
           type="tel"
           onChange={handleInputChange}
@@ -120,11 +119,7 @@ const Form = ({ onClose }) => {
           id="number"
           required
         />
-        <Button
-          variant="outlined"
-          type="submit"
-          className={styles.button_mobile}
-        >
+        <Button variant="outlined" type="submit" style={button_mobile}>
           <AddIcon color="action" />
         </Button>
       </form>

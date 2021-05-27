@@ -1,10 +1,13 @@
 import { useState } from "react";
-import { form_input, contact_form } from "./RegistrationForm.module.scss";
+import {
+  form_input,
+  contact_form,
+  button_mobile,
+} from "./RegistrationFormStyle";
 
 // Meterial
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
 import PersonAddOutlinedIcon from "@material-ui/icons/PersonAddOutlined";
 
 // Toastify
@@ -13,32 +16,13 @@ import {
   nameInputValidation,
   emailInputValidation,
   passwordInputValidation,
-} from "../../utils/error-notifications/error-notifications.ts";
+} from "../../utils/error-notifications/error-notifications";
 
 // Redux
 import { useDispatch } from "react-redux";
 import authOperations from "../../redux/auth/auth-operations";
 
-// Styles
-const useStyles = makeStyles({
-  button_mobile: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width: 300,
-    fontSize: 12,
-    background: "#758BFD",
-    "&:hover": {
-      background: "#758BFD",
-    },
-    "&:active": {
-      background: "#758BFD",
-    },
-  },
-});
-
 const RegistrationForm = () => {
-  const styles = useStyles();
   const dispatch = useDispatch();
 
   const [credentials, setCredentials] = useState({
@@ -47,7 +31,7 @@ const RegistrationForm = () => {
     password: "",
   });
 
-  const handleInputChange = (event) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
     setCredentials({
@@ -56,7 +40,7 @@ const RegistrationForm = () => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     formSubmitHandler(credentials);
   };
@@ -69,7 +53,13 @@ const RegistrationForm = () => {
     });
   };
 
-  const formSubmitHandler = ({ name, email, password }) => {
+  type TCredentials = {
+    name: string;
+    email: string;
+    password: string;
+  };
+
+  const formSubmitHandler = ({ name, email, password }: TCredentials) => {
     const testName =
       /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/.test(name);
 
@@ -94,14 +84,14 @@ const RegistrationForm = () => {
   return (
     <>
       <form
-        className={contact_form}
+        style={contact_form}
         noValidate
         autoComplete="on"
         onSubmit={handleSubmit}
       >
         <Input
           placeholder="Name"
-          className={form_input}
+          style={form_input}
           inputProps={{ "aria-label": "contact name" }}
           type="text"
           onChange={handleInputChange}
@@ -113,7 +103,7 @@ const RegistrationForm = () => {
         />
         <Input
           placeholder="Email"
-          className={form_input}
+          style={form_input}
           inputProps={{ "aria-label": "contact email" }}
           type="email"
           onChange={handleInputChange}
@@ -125,7 +115,7 @@ const RegistrationForm = () => {
         />
         <Input
           placeholder="Password"
-          className={form_input}
+          style={form_input}
           inputProps={{ "aria-label": "contact password" }}
           type="password"
           onChange={handleInputChange}
@@ -135,11 +125,7 @@ const RegistrationForm = () => {
           required
           autoComplete="on"
         />
-        <Button
-          variant="contained"
-          type="submit"
-          className={styles.button_mobile}
-        >
+        <Button variant="contained" type="submit" style={button_mobile}>
           <PersonAddOutlinedIcon color="action" />
         </Button>
       </form>

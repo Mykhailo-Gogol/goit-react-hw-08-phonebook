@@ -1,3 +1,4 @@
+import React from "react";
 import { filter_input, filter_wrapper } from "./FilterStyle";
 
 // Redux
@@ -12,7 +13,7 @@ import Input from "@material-ui/core/Input";
 
 type TEvent = React.ChangeEvent<HTMLInputElement>;
 
-const Filter = () => {
+const Filter: React.FC = () => {
   const filter = useSelector(contactsSelectors.filterSelector);
 
   const dispatch = useDispatch<Dispatch>();

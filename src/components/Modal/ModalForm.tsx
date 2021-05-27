@@ -1,4 +1,4 @@
-import styles from "./ModalForm.module.scss";
+import { modal_container } from "./ModalFormStyle";
 
 // Material
 import Modal from "@material-ui/core/Modal";
@@ -7,7 +7,13 @@ import Fade from "@material-ui/core/Fade";
 // Comps
 import Form from "../Form";
 
-const ModalForm = ({ open, onClose }) => {
+const ModalForm = ({
+  open,
+  onClose,
+}: {
+  open: boolean;
+  onClose: (onClose: boolean) => void;
+}) => {
   return (
     <div>
       <Modal
@@ -20,7 +26,7 @@ const ModalForm = ({ open, onClose }) => {
           timeout: 500,
         }}
       >
-        <div className={styles.modal_container}>
+        <div style={modal_container}>
           <h4 style={{ textAlign: "center" }}>Add contact</h4>
           <Form onClose={onClose} />
         </div>

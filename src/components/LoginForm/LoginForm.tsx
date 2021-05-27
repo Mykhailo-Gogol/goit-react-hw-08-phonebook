@@ -1,11 +1,9 @@
 import { useState } from "react";
-import { form_input, contact_form } from "./LoginForm.module.scss";
+import { form_input, contact_form, button_mobile } from "./LoginFormStyle";
 
 // Meterial
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
-
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 
 // Toastify
@@ -13,32 +11,13 @@ import { ToastContainer } from "react-toastify";
 import {
   emailInputValidation,
   passwordInputValidation,
-} from "../../utils/error-notifications/error-notifications.ts";
+} from "../../utils/error-notifications/error-notifications";
 
 // Redux
 import { useDispatch } from "react-redux";
 import authOperations from "../../redux/auth/auth-operations";
 
-// Styles
-const useStyles = makeStyles({
-  button_mobile: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width: 300,
-    fontSize: 12,
-    background: "#758BFD",
-    "&:hover": {
-      background: "#758BFD",
-    },
-    "&:active": {
-      background: "#758BFD",
-    },
-  },
-});
-
 const LoginForm = () => {
-  const styles = useStyles();
   const dispatch = useDispatch();
 
   const [credentials, setCredentials] = useState({
@@ -46,7 +25,7 @@ const LoginForm = () => {
     password: "",
   });
 
-  const handleInputChange = (event) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
     setCredentials({
@@ -55,7 +34,7 @@ const LoginForm = () => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     formSubmitHandler(credentials);
   };
@@ -67,7 +46,13 @@ const LoginForm = () => {
     });
   };
 
-  const formSubmitHandler = ({ email, password }) => {
+  const formSubmitHandler = ({
+    email,
+    password,
+  }: {
+    email: string;
+    password: string;
+  }) => {
     const testEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
     const testPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(
@@ -87,14 +72,14 @@ const LoginForm = () => {
   return (
     <>
       <form
-        className={contact_form}
+        style={contact_form}
         noValidate
         autoComplete="on"
         onSubmit={handleSubmit}
       >
         <Input
           placeholder="Email"
-          className={form_input}
+          style={form_input}
           inputProps={{ "aria-label": "contact email" }}
           type="email"
           onChange={handleInputChange}
@@ -106,7 +91,7 @@ const LoginForm = () => {
         />
         <Input
           placeholder="Password"
-          className={form_input}
+          style={form_input}
           inputProps={{ "aria-label": "contact password" }}
           type="password"
           onChange={handleInputChange}
@@ -116,11 +101,7 @@ const LoginForm = () => {
           required
           autoComplete="on"
         />
-        <Button
-          variant="contained"
-          type="submit"
-          className={styles.button_mobile}
-        >
+        <Button variant="contained" type="submit" style={button_mobile}>
           <LockOpenIcon color="action" />
         </Button>
       </form>
