@@ -1,13 +1,13 @@
 import React from "react";
 
-import scss_styles from "./Login.module.scss";
+import { login_page_wrapper } from "./LoginStyle";
 
 // Comps
 import LoginForm from "../../components/LoginForm";
 
 const Login: React.FC = () => {
   return (
-    <div className={scss_styles.login_page_wrapper}>
+    <div style={login_page_wrapper}>
       <LoginForm />
     </div>
   );

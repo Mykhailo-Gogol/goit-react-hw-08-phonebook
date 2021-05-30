@@ -1,12 +1,12 @@
 import React from "react";
-import scss_styles from "./Register.module.scss";
+import { register_page_wrapper } from "./RegisterStyle";
 
 // Comps
 import RegistrationForm from "../../components/RegistrationForm";
 
 const Register: React.FC = () => {
   return (
-    <div className={scss_styles.register_page_wrapper}>
+    <div style={register_page_wrapper}>
       <RegistrationForm />
     </div>
   );

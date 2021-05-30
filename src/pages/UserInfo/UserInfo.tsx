@@ -1,6 +1,11 @@
 import React from "react";
 
-import scss_styles from "./UserInfo.module.scss";
+import {
+  user_page_wrapper,
+  user_info,
+  user_info_p,
+  user_page_title,
+} from "./UserInfoStyle";
 
 // Redux
 import { useSelector } from "react-redux";
@@ -15,14 +20,14 @@ const UserInfo: React.FC = () => {
   const userEmail: string = useSelector(authSelectors.userEmailSelector);
 
   return (
-    <div className={scss_styles.user_page_wrapper}>
-      <h2 className={scss_styles.user_page_title}>Profile Info</h2>
-      <div className={scss_styles.user_info}>
-        <p>
+    <div style={user_page_wrapper}>
+      <h2 style={user_page_title}>Profile Info</h2>
+      <div style={user_info}>
+        <p style={user_info_p}>
           <AccountBoxIcon color="action" />
           {userName}
         </p>
-        <p>
+        <p style={user_info_p}>
           <MailOutlineIcon color="action" />
           {userEmail}
         </p>

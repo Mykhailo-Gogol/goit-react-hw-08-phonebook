@@ -1,4 +1,6 @@
-import scss_styles from "./App.module.scss";
+import { container, container_mobile } from "./AppStyle";
+import { useMedia } from "react-use";
+
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 // React
@@ -48,6 +50,8 @@ const UserInfoPage = lazy(
 );
 
 const App = () => {
+  const isWide = useMedia("(max-width: 767px)");
+
   const dispatch = useDispatch();
   const isLoading: boolean = useSelector(contactsSelectors.isLoadingSelector);
 
@@ -57,7 +61,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className={scss_styles.container}>
+    <div style={isWide ? container_mobile : container}>
       <div>
         <AppBar />
       </div>

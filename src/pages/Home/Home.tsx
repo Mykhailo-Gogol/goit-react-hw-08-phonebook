@@ -1,4 +1,9 @@
-import scss_styles from "./Home.module.scss";
+import {
+  home_title,
+  home_icon,
+  home_page_wrapper,
+  user_name,
+} from "./HomeStyle";
 
 import React from "react";
 
@@ -16,19 +21,15 @@ import authSelectors from "../../redux/auth/auth-selectors";
 const Home: React.FC = () => {
   const userName: string = useSelector(authSelectors.userNameSelector);
   return (
-    <div className={scss_styles.home_page_wrapper}>
+    <div style={home_page_wrapper}>
       {userName && (
-        <h1 className={scss_styles.home_title}>
-          <span className={scss_styles.user_name}>{`${userName}'s`}</span>
+        <h1 style={home_title}>
+          <span style={user_name}>{`${userName}'s`}</span>
           Phonebook
         </h1>
       )}
       <Link to={routes.contacts}>
-        <img
-          src={phonebookIcon}
-          alt="home page icon"
-          className={scss_styles.home_icon}
-        />
+        <img src={phonebookIcon} alt="home page icon" style={home_icon} />
       </Link>
     </div>
   );
